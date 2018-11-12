@@ -1,19 +1,22 @@
+// @flow
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const greet = ({name}) => (
-  typeof name === 'string'
-  ? <Text>`Hello ${name}`</Text> 
-  : <Text>Hello nobody!</Text>
+type GreetingProps = {
+  name?: ?string,
+};
+const greet = (props: ?GreetingProps) => {
+  const {name = 'World'} = props;
+  return <Text>`Hello ${name}`</Text>;
 };
 
 const App = () => {
-  const greeting = greet()
+  const greeting = greet();
   return (
     <View>
       <Text>{greeting}</Text>
     </View>
-  )
+  );
 };
 
 export default App;
