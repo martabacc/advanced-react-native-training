@@ -10,4 +10,4 @@ git:
 install:
   - npm install
 script:
-  - npm lint
+  - npm run lint

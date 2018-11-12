@@ -8,7 +8,7 @@
     "lint": "eslint src",
     "prettier": "prettier \"**/*.*(js|json|md|graphql|yaml)\"",
     "format": "yarn prettier  --write",
-    "validate": "yarn lint && yarn prettier --list-different"
+    "validate": "yarn lint && yarn prettier --list-different --ignore-warnings"
   },
   "dependencies": {
     "husky": "^1.1.3",
