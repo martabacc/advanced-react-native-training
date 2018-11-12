@@ -7,7 +7,7 @@
     "test": "jest",
     "typecheck": "flow",
     "flow-coverage": "flow-coverage-report --config ./.flowcoverage",
-    "precommit": "lint-staged && yarn typecheck"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "prettier": "^1.15.2",
