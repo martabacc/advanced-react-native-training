@@ -21,7 +21,7 @@ jobs:
             - ./node_modules
       - run: # run tests
           name: Run code through checking format
-          command: |
-            # ./cc-test-reporter before-build
+          command:
             npm run lint
+            # ./cc-test-reporter before-build
             # ./cc-test-reporter after-build --exit-code $?
