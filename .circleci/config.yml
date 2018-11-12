@@ -22,6 +22,6 @@ jobs:
       - run: # run tests
           name: Run code through checking format
           command:
-            npm run lint
+            npm run precommit
             # ./cc-test-reporter before-build
             # ./cc-test-reporter after-build --exit-code $?
