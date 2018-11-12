@@ -3,15 +3,14 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 type GreetingProps = {
-  name?: ?string,
+  name: string,
 };
-const greet = (props: ?GreetingProps) => {
-  const {name = 'World'} = props;
-  return <Text>`Hello ${name}`</Text>;
+const Greet = (props: GreetingProps) => {
+  return <Text>`Hello ${props.name}`</Text>;
 };
 
 const App = () => {
-  const greeting = greet();
+  const greeting = <Greet name="Mickey Mouse" />;
   return (
     <View>
       <Text>{greeting}</Text>
