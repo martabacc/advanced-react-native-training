@@ -2,9 +2,10 @@ languange: node_js
 node_js:
   - "10"
 sudo: false
-cache:
-  directories:
-  - node_modules
+
+# Only clone the most recent commit.
+git:
+  depth: 1
 
 install:
   - yarn install
