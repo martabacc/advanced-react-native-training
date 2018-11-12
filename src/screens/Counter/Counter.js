@@ -2,29 +2,37 @@
 
 import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import withColorRandomizer from '../../enhancers/withColorRandomizer';
 
 import {Text} from '../../core-ui';
 
-export default class Counter extends Component<*, *> {
-  state = {
-    counter: 0,
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {counter: 0};
+  }
+
+  incrementCounter = () => {
+    this.setState({counter: this.state.counter + 1});
+    this.props.changeColor();
+  };
+
+  decrementCounter = () => {
+    this.setState({counter: this.state.counter - 1});
+    this.props.changeColor();
   };
 
   render() {
     return (
-      <View style={styles.root}>
+      <View style={[styles.root, {backgroundColor: this.props.bgColor}]}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {
-            this.setState({counter: this.state.counter + 1});
-          }}
+          onPress={this.incrementCounter}
         />
         <Text style={styles.counterText}>{this.state.counter}</Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {
-            this.setState({counter: this.state.counter - 1});
-          }}
+          onPress={this.decrementCounter}
         />
       </View>
     );
@@ -34,7 +42,6 @@ export default class Counter extends Component<*, *> {
 let styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#ffc425',
     alignItems: 'center',
   },
   button: {
@@ -46,3 +53,5 @@ let styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default withColorRandomizer(Counter);
