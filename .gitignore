@@ -57,3 +57,6 @@ buck-out/
 
 # code matter
 .idea
+
+# flow-coverage generated file
+flow-coverage
