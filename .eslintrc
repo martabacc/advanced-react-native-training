@@ -1,5 +1,5 @@
 {
-    "parser": "babel-eslint", // we define the parser, so we're going to use babel eslint for this case
+    "parser": "babel-eslint",
     "extends": ["plugin:react/recommended"],
     "plugins": ["babel", "react"],
     "settings": {
