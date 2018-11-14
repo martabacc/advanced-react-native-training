@@ -12,11 +12,15 @@ type Props = {
 };
 
 function Counter(props: Props) {
-  let {counter, onIncrement, onDecrement} = props;
+  const {
+    counter: {coba},
+    onIncrement,
+    onDecrement,
+  } = props;
   return (
     <View style={styles.root}>
       <TouchableOpacity style={styles.button} onPress={onIncrement} />
-      <Text style={styles.counterText}>{counter}</Text>
+      <Text style={styles.counterText}>{coba}</Text>
       <TouchableOpacity style={styles.button} onPress={onDecrement} />
     </View>
   );

@@ -11,17 +11,17 @@ function combineReducers(reducers) {
 function createStore(reducer, initialState) {
   let currentReducer = reducer;
   let currentState = initialState;
-  let listeners = [];
+  const listeners = [];
 
-  let getState = () => currentState;
-  let subscribe = (listener) => {
+  const getState = () => currentState;
+  const subscribe = (listener) => {
     listeners.push(listener);
     return () => {
       let index = listeners.indexOf(listener);
       listeners.splice(index, 1);
     };
   };
-  let dispatch = (action) => {
+  const dispatch = (action) => {
     currentState = currentReducer(currentState, action);
     listeners.slice().forEach((listener) => listener());
     return action;
