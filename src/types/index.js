@@ -48,7 +48,19 @@ export type TransactionAction =
       };
     };
 
-export type RootAction = CounterAction | TransactionAction;
+export type LoginAction =
+  | { type: "LOGIN_USER", payload: { email: string, password: string } }
+  | { type: "LOGOUT_USER" };
+
+export type LoginState = {
+  email: string,
+  password: string,
+  token: string
+};
+
+export type RootAction = CounterAction | TransactionAction | LoginAction;
 export type RootState = {
   transaction: Array<Transaction>;
+  login: LoginState;
+  category: Category;
 };

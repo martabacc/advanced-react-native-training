@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import store from './store/createStore';
 import Dashboard from './screens/Dashboard/Dashboard';
 import AddTransaction from './screens/AddTransaction/AddTransaction';
-import Login from './screens/Login/Login';
+import Login from './screens/Login/Login.container';
 import Chart from './screens/Chart/Chart';
 type Props = {};
 type State = {};
@@ -14,7 +14,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <Provider store={store}>
-        <Chart />
+        <Login />
       </Provider>
     );
   }

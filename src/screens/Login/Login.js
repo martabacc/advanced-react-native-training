@@ -28,7 +28,8 @@ export default class Login extends Component<*, State> {
   };
 
   render() {
-    let {email, password, activeTextInput} = this.state;
+    const { activeTextInput} = this.state;
+    const {submit, placeholder: {email, password}} = this.props;
     return (
       <View style={styles.root}>
         <KeyboardAvoidingView behavior="padding">
@@ -58,7 +59,7 @@ export default class Login extends Component<*, State> {
               ]}
             />
           </View>
-          <Button text="SIGN IN" onPress={() => {}} />
+          <Button text="SIGN IN" onPress={() => submit({email, password})} />
         </KeyboardAvoidingView>
       </View>
     );
