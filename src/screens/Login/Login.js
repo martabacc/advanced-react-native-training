@@ -67,7 +67,7 @@ class Login extends Component<*, State> {
 
   _handleSubmit = () => {
     //let {email, password} = this.state;
-    this.props.navigation.navigate('dashboard');
+    this.props.navigation.navigate('User');
     //TODO: Handle Submit Login
   };
   _setActiveTextInput(activeTextInput: 'EMAIL' | 'PASSWORD' | null) {

@@ -14,6 +14,7 @@ import {
   Dashboard,
   Login,
 } from '../screens';
+import User from '../screens/User/User.container';
 import TabBar from './components/TabBar';
 
 // $FlowFixMe: Weird Flow Issue right here
@@ -45,10 +46,15 @@ let DrawerNavigator = createDrawerNavigator({
   dashboard: BottomNavigator,
 });
 
+let GraphQLNavigator = createBottomTabNavigator(
+  { User: User, },
+);
+
 let MainNavigator = createSwitchNavigator({
   authentication: Authentication,
   login: Login,
   dashboard: DrawerNavigator,
+  user: GraphQLNavigator,
 });
 
 export default MainNavigator;
