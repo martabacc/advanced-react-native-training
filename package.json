@@ -18,14 +18,18 @@
     "apollo-boost": "^0.1.20",
     "class-autobind": "^0.1.4",
     "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "react": "16.5.0",
     "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
     "react-native": "0.57.1",
     "react-native-calendars": "^1.21.0",
+    "react-native-dropdownalert": "^3.7.0",
+    "react-native-elements": "^0.19.1",
     "react-native-svg": "^8.0.8",
     "react-native-vector-icons": "^6.0.2",
     "react-navigation": "^2.18.2",
+    "tcomb-form-native": "^0.6.20",
     "victory-native": "^31.0.0"
   },
   "devDependencies": {

@@ -1,83 +1,63 @@
 import React, { Component } from 'react';
-import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import DropdownAlert from 'react-native-dropdownalert';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import Loading from '../Common/Loading.container';
 
-const users = [
-  {
-    'name': 'Proxima Midnight',
-    'email': 'proxima@appdividend.com',
-  },
-  {
-    'name': 'Ebony Maw',
-    'email': 'ebony@appdividend.com',
-  },
-  {
-    'name': 'Black Dwarf',
-    'email': 'dwarf@appdividend.com',
-  },
-  {
-    'name': 'Mad Titan',
-    'email': 'thanos@appdividend.com',
-  },
-  {
-    'name': 'Supergiant',
-    'email': 'supergiant@appdividend.com',
-  },
-  {
-    'name': 'Loki',
-    'email': 'loki@appdividend.com',
-  },
-  {
-    'name': 'corvus',
-    'email': 'corvus@appdividend.com',
-  },
-  {
-    'name': 'Proxima Midnight',
-    'email': 'proxima1@appdividend.com',
-  },
-  {
-    'name': 'Ebony Maw',
-    'email': 'ebony1@appdividend.com',
-  },
-  {
-    'name': 'Black Dwarf',
-    'email': 'dwarf1@appdividend.com',
-  },
-  {
-    'name': 'Mad Titan',
-    'email': 'thanos1@appdividend.com',
-  },
-  {
-    'name': 'Supergiant',
-    'email': 'supergiant1@appdividend.com',
-  },
-  {
-    'name': 'Loki',
-    'email': 'loki1@appdividend.com',
-  },
-  {
-    'name': 'corvus',
-    'email': 'corvus1@appdividend.com',
-  },
-];
+const query = gql`
+{
+	users {
+	  id
+    name
+    email
+	}
+}`;
 
 export default class User extends Component {
+  dropdown = React.createRef();
+
+  showError = () => {
+    this.dropdown.alertWithType('error', 'Error', 'An error occured, please try again.');
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.h2text}>
-          User
-        </Text>
-        <FlatList
-          data={users}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) =>
-            <View style={styles.flatview}>
-              <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.email}>{item.email}</Text>
-            </View>
+        <Query
+          query={query}
+        >
+          {
+            ({ loading, error, data }) => {
+              if (loading) { return <Loading />; }
+              if (error) { this.showError(); return null; }
+
+              const { users } = data;
+              return (
+                <View style={styles.container}>
+                  <Text style={styles.h2text}>
+                    User
+                  </Text>
+                  <FlatList
+                    data={users}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item }) =>
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('UpdateUser', {user: item})}>
+                        <View style={styles.flatview}>
+                          <Text style={styles.name}>{item.name}</Text>
+                          <Text style={styles.email}>{item.email}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    }
+                    keyExtractor={item => item.email}
+                  />
+                </View>
+              );
+            }
           }
-          keyExtractor={item => item.email}
-        />
+        </Query>
+        <DropdownAlert ref={ref => this.dropdown = ref} />
       </View>
     );
   }

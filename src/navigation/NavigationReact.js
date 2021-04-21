@@ -14,6 +14,7 @@ import {
   Dashboard,
   Login,
 } from '../screens';
+import UpdateUser from '../screens/User/UpdateUser.container';
 import User from '../screens/User/User.container';
 import TabBar from './components/TabBar';
 
@@ -47,7 +48,7 @@ let DrawerNavigator = createDrawerNavigator({
 });
 
 let GraphQLNavigator = createBottomTabNavigator(
-  { User: User, },
+  { User: User },
 );
 
 let MainNavigator = createSwitchNavigator({
@@ -55,6 +56,7 @@ let MainNavigator = createSwitchNavigator({
   login: Login,
   dashboard: DrawerNavigator,
   user: GraphQLNavigator,
+  UpdateUser: UpdateUser
 });
 
 export default MainNavigator;
